@@ -1,0 +1,22 @@
+let bi = 0
+let dec = 0
+let n = 0
+let szamrendszer = 0
+let RT_input = ""
+basic.forever(() => {
+    RT_input = serial.readLine()
+    n = RT_input.length
+    dec = 0
+    for (let i = 0; i <= n - 1; i++) {
+        bi = parseInt(RT_input.charAt(n - 1 - i))
+        if (bi <= 1) {
+            dec += bi * Math.pow(szamrendszer, i)
+        } else {
+            serial.writeLine("Az input nem binaris!")
+        }
+    }
+    serial.writeLine("Dec:")
+    serial.writeNumber(dec)
+})
+serial.writeLine("Binary to decimal converter - receives binary numbers on serial port, converts the received number to decimal form, sends the converted number, through it's serial port.")
+szamrendszer = 2

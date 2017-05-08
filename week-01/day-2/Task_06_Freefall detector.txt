@@ -1,0 +1,9 @@
+let z_gyorsulás = 0
+basic.forever(() => {
+    basic.clearScreen()
+    z_gyorsulás = input.acceleration(Dimension.Z)
+    basic.showNumber(z_gyorsulás)
+    basic.pause(100)
+    basic.clearScreen()
+})
+z_gyorsulás = 0

@@ -1,0 +1,7 @@
+basic.forever(() => {
+    basic.clearScreen()
+    led.setBrightness(123)
+    basic.showArrow(ArrowNames.North)
+    basic.pause(100)
+    basic.clearScreen()
+})

@@ -1,0 +1,7 @@
+basic.forever(() => {
+    basic.showNumber(input.rotation(Rotation.Roll))
+    basic.pause(100)
+    basic.clearScreen()
+    basic.showNumber(input.rotation(Rotation.Pitch))
+    basic.pause(100)
+})

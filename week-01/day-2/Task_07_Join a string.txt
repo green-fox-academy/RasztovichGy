@@ -1,0 +1,5 @@
+basic.forever(() => {
+    basic.clearScreen()
+    basic.showString("Hello" + "World")
+    basic.pause(100)
+})

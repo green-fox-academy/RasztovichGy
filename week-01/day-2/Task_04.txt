@@ -1,0 +1,7 @@
+let Gyula = 0
+Gyula = 4
+while (Gyula <= 7) {
+    basic.showNumber(Gyula)
+    Gyula += 1
+    basic.pause(1000)
+}

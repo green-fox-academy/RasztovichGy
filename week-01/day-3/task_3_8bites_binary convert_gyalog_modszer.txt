@@ -1,0 +1,29 @@
+let decimalis_ertek = 0
+let hetedik_hatvany = 0
+let hatodik_hatvany = 0
+let otodik_hatvany = 0
+let negyedik_hatvany = 0
+let harmadik_hatvany = 0
+let masodik_hatvany = 0
+let elso_hatvany = 0
+let nulladik_hatvany = 0
+let RT_input = ""
+basic.forever(() => {
+    basic.clearScreen()
+    RT_input = serial.readLine()
+    nulladik_hatvany = parseInt(RT_input.charAt(7))
+    elso_hatvany = parseInt(RT_input.charAt(6))
+    masodik_hatvany = parseInt(RT_input.charAt(5))
+    harmadik_hatvany = parseInt(RT_input.charAt(4))
+    negyedik_hatvany = parseInt(RT_input.charAt(3))
+    otodik_hatvany = parseInt(RT_input.charAt(2))
+    hatodik_hatvany = parseInt(RT_input.charAt(1))
+    hetedik_hatvany = parseInt(RT_input.charAt(0))
+    if (nulladik_hatvany + elso_hatvany + (masodik_hatvany + harmadik_hatvany) + (negyedik_hatvany + otodik_hatvany + (hatodik_hatvany + hetedik_hatvany)) <= 8 && RT_input.length == 8) {
+        decimalis_ertek = nulladik_hatvany * 1 + elso_hatvany * 2 + (masodik_hatvany * 4 + harmadik_hatvany * 8) + (negyedik_hatvany * 16 + otodik_hatvany * 32 + (hatodik_hatvany * 64 + hetedik_hatvany * 128))
+        serial.writeNumber(decimalis_ertek)
+    } else {
+        serial.writeLine("Nincs megoldas, mert az input adat nem 8 jegyu vagy nem binaris szam.")
+    }
+})
+serial.writeLine("Binary to decimal converter - receives binary numbers on serial port, converts the received number to decimal form, sends the converted number, through it's serial port.")

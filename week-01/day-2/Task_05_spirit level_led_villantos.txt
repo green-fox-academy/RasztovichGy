@@ -1,0 +1,17 @@
+let led_x_koord = 0
+let elfordulás_rövid_tg_körül = 0
+basic.forever(() => {
+    basic.clearScreen()
+    elfordulás_rövid_tg_körül = input.rotation(Rotation.Roll)
+    if (elfordulás_rövid_tg_körül > 0) {
+        led.plot(0, 2)
+    } else {
+        if (elfordulás_rövid_tg_körül < 0) {
+            led.plot(4, 2)
+        } else {
+            led.plot(2, 2)
+        }
+    }
+})
+elfordulás_rövid_tg_körül = 0
+led_x_koord = 2

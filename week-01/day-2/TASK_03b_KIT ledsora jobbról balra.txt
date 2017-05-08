@@ -1,0 +1,11 @@
+let Gyula = 0
+basic.forever(() => {
+    led.plot(Gyula, 2)
+    Gyula += -1
+    basic.pause(1000)
+    basic.clearScreen()
+})
+input.onButtonPressed(Button.A, () => {
+    led.setBrightness(47)
+    Gyula = 5
+})

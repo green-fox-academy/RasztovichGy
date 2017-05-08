@@ -1,0 +1,8 @@
+input.onGesture(Gesture.Shake, () => {
+    if (input.buttonIsPressed(Button.B)) {
+        basic.showString("!")
+        basic.pause(250)
+        basic.clearScreen()
+    }
+    basic.clearScreen()
+})

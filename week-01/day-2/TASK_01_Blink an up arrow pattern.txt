@@ -1,0 +1,4 @@
+basic.clearScreen()
+basic.showArrow(ArrowNames.North)
+basic.pause(500)
+basic.clearScreen()

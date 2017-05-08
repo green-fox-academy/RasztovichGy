@@ -1,0 +1,9 @@
+let str = ""
+basic.forever(() => {
+    str = serial.readString()
+    basic.showString(str)
+    radio.sendString(str)
+    serial.writeString(str)
+})
+serial.writeLine("Task 2 - receives new line terminated strings on it's serial port and forwards it through it's radio interface")
+radio.setGroup(66)

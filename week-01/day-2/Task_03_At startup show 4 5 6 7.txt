@@ -1,0 +1,7 @@
+let Gyula = 0
+basic.forever(() => {
+    basic.showNumber(Gyula)
+    Gyula += 1
+    basic.pause(1000)
+})
+Gyula = 4

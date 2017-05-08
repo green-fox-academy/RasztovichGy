@@ -1,0 +1,7 @@
+radio.onDataPacketReceived(({receivedString}) => {
+    basic.showString(receivedString)
+    basic.pause(250)
+    serial.writeString(receivedString)
+})
+serial.writeLine("Task 2/b - Receives text on radio")
+radio.setGroup(66)

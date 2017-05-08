@@ -1,0 +1,10 @@
+Make a program on your micro:bit panel which receives new line terminated strings from the serial port and sends it back right away.
+
+
+let str = ""
+basic.forever(() => {
+    str = serial.readString()
+    basic.showString(str)
+    serial.writeString(str)
+})
+serial.writeLine("Startup...")

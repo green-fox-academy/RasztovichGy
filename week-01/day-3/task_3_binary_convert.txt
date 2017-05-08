@@ -1,0 +1,27 @@
+let decimalis_ertek = 0
+let masodik_szam = 0
+let elso_szam = 0
+let negyedik_helyiertek = ""
+let harmadik_helyiertek = ""
+let harmadik_szam = 0
+let negyedik_szam = 0
+let masodik_helyiertek = ""
+let szamma_alakitott_beolvasas = 0
+let elso_helyiertek = ""
+let input_hossza = 0
+let receivedbinnr = ""
+basic.forever(() => {
+    receivedbinnr = serial.readLine()
+    input_hossza = receivedbinnr.length
+    elso_helyiertek = receivedbinnr.charAt(3)
+    masodik_helyiertek = receivedbinnr.charAt(2)
+    harmadik_helyiertek = receivedbinnr.charAt(1)
+    negyedik_helyiertek = receivedbinnr.charAt(0)
+    elso_szam = parseInt(elso_helyiertek)
+    masodik_szam = parseInt(masodik_helyiertek)
+    harmadik_szam = parseInt(harmadik_helyiertek)
+    negyedik_szam = parseInt(negyedik_helyiertek)
+    decimalis_ertek = elso_szam * 1 + masodik_szam * 2 + (harmadik_szam * 4 + negyedik_szam * 8)
+    serial.writeNumber(decimalis_ertek)
+})
+serial.writeLine("Binary to decimal converter - receives binary numbers on serial port, converts the received number to decimal form, sends the converted number, through it's serial port.")

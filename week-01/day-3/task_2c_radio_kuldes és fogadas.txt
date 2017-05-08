@@ -1,0 +1,14 @@
+let str = ""
+basic.forever(() => {
+    str = serial.readString()
+    if (str.length > 0) {
+        basic.showString(str)
+        radio.sendString(str)
+        serial.writeString(str)
+    }
+})
+radio.onDataPacketReceived(({receivedString}) => {
+    serial.writeString(receivedString)
+})
+serial.writeLine("Task 2/c - receives new line terminated strings on it's serial port and forwards it through it's radio interface; receive text on radio")
+radio.setGroup(66)
