@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 int main() {
@@ -7,12 +6,20 @@ int main() {
 	// and for the multiples of five print "Buzz".
 	// For numbers which are multiples of both three and five print "FizzBuzz".
 
-	int ag = 0;
+	int ag = 1;
 
 	while (ag<=99) {
+        if(ag%15==0){
+        printf("FizzBuzz\n");
+        }
+        else if(ag%3==0){
+        printf("Fizz\n");
+        }
+        else if(ag%5==0){
+        printf("Buzz\n");
+        }
+        else printf("%d\n", ag);
     ag = ag+1;
-    printf("%d\n", ag);
-}
-
-	return 0;
+    }
+    	return 0;
 }
