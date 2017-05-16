@@ -16,23 +16,30 @@
 
 #define RX_CIRC_BUFF_LEN 25
 //TODO: Create the circular buffer with the length of RX_CIRC_BUFF_LEN
-
+volatile char circ_buff[RX_CIRC_BUFF_LEN];
 //TODO: Create the head pointer of the buffer
-
+volatile char *rx_circ_buff_head_ptr = &circ_buff[0];
 //TODO: Create the tail pointer of the buffer
-
+volatile char *rx_circ_buff_tail_ptr = &circ_buff[RX_CIRC_BUFF_LEN - 1];
 //TODO: Create the write pointer of the buffer
-
+volatile char *rx_circ_buff_write_ptr;
 //TODO: Create the read pointer of the buffer
+volatile char *rx_circ_buff_read_ptr;
 
 ISR(USART_RX_vect) {
 	//TODO:
 	// Put received character into the circular buffer
+	*rx_circ_buff_write_ptr = UDR0;
 
 	//TODO:
 	// Increment the write ptr
 	// Be aware that the write ptr might point to the end of the buffer.
 	// In this case you have to set it back to the start of the buffer
+	if (rx_circ_buff_write_ptr == rx_circ_buff_tail_ptr) {
+		rx_circ_buff_write_ptr = rx_circ_buff_head_ptr;
+		}else    {
+		rx_circ_buff_write_ptr++;
+	}
 }
 
 void UART_Init() {
@@ -59,6 +66,8 @@ void UART_Init() {
 
 	//TODO:
 	// Initialize circular buffer pointers, they should point to the head of the buffer
+	rx_circ_buff_write_ptr = rx_circ_buff_head_ptr;
+	rx_circ_buff_read_ptr = rx_circ_buff_head_ptr;
 
 	// Enable interrupts globally
 	sei();
@@ -78,17 +87,25 @@ void UART_SendCharacter(char character) {
 char UART_GetCharacter() {
 	//TODO:
 	// Wait for data in the circular buffer, this can be detected if the write and read pointers are pointing to the same memory block
+	while(rx_circ_buff_read_ptr == rx_circ_buff_write_ptr);
 
 	//TODO:
 	// Save the data to a temporary variable
+	char to_return = *rx_circ_buff_read_ptr;
 
 	//TODO:
 	// Increment the read ptr
 	// Be aware that the read ptr might point to the end of the buffer.
 	// In this case you have to set it back to the start of the buffer
+	if(rx_circ_buff_read_ptr == rx_circ_buff_tail_ptr) {
+		rx_circ_buff_read_ptr = rx_circ_buff_head_ptr;
+		} else {
+		rx_circ_buff_read_ptr++;
+	}
 
 	//TODO:
 	// Return the read character
+	return to_return;
 }
 
 int main(void) {
