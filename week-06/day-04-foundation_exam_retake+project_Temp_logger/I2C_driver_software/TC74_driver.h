@@ -9,10 +9,8 @@
 //TODO
 //Define the TC74A0 address
 // TC74 datasheet page 15 -> address = 1001 000
-#define TC74_ADDR 0b10010000
-//nem eliras az adat tenyleg 7 biten van tarolva, a nyolcadik bit a végén van ami read vagy write
-// ezert elvben shiftelni kellene 
-// de egyszerubb eleve azt az egy nullát beírni a végére.
+#define TC74_ADDR 0b1001000
+//nem eliras az adat tenyleg 7 biten van tarolva
 
 void TWI_init(void);
 void TWI_start(void);
@@ -20,5 +18,6 @@ void TWI_write(uint8_t u8data);
 void TWI_stop(void);
 uint8_t TWI_read_nack(void);
 uint8_t TWI_read_ack(void);
+int8_t readtemp(void);
 
 #endif // _TC74_DRIVER_H
