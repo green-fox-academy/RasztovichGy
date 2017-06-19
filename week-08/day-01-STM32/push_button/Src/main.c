@@ -93,18 +93,23 @@ int main(void)
 The task is to make the LED lit if the user pushbutton is pressed.
 If the button is not pressed, the LED should not be lit.
      */
+
+
+  // enable LED and GPIO
   BSP_LED_Init(LED_GREEN); //init led
   BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO); //init pushbutton in mode BUTTON_KEY: Key Push Button and BUTTON_MODE_GPIO: Button will be used as simple IO
   BSP_PB_GetState(BUTTON_KEY); //init button getstate function
 
   /* Infinite loop */
-  while (BSP_PB_GetState(BUTTON_KEY) = BUTTON_KEY)
-  {
-	  BSP_LED_On(LED_GREEN);
-  }
 
+
+while (1){
+	  if (BSP_PB_GetState(BUTTON_KEY) == GPIO_PIN_SET) //value: check getstate eredménye
+	  {
+	  	  BSP_LED_On(LED_GREEN);
+	  }
+	}
 }
-
 /**
   * @brief  System Clock Configuration
   *         The system Clock is configured as follow : 
