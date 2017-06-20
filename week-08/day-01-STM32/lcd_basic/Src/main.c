@@ -35,6 +35,13 @@
   ******************************************************************************
   */
 
+/*******************
+ * Basic LCD usage *
+ * *****************
+
+In the Setting up the environment section you copied another template project, which is located in Projects\STM32746G-Discovery\GreenFox\lcd_basic\SW4STM32\STM32746G_Discovery_lcd_basic.
+Open this project in SWSTM32, and modify the code! Try to print out strings on the LCD, play around with the BSP LCD functions (strings, basic shapes, colors, etc.).*/
+
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32746g_discovery_lcd.h"
@@ -52,6 +59,8 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
+
+//static void LCD_Config(void); //ez is kell!
 
 static void SystemClock_Config(void);
 static void Error_Handler(void);
@@ -93,11 +102,38 @@ int main(void)
 
   /* Add your application code here
      */
+  BSP_LCD_Init();
+
+  /* LCD Initialization */
+  //BSP_LCD_LayerDefaultInit(uint16_t LayerIndex, uint32_t FB_Address)
+  BSP_LCD_LayerDefaultInit(LTDC_ACTIVE_LAYER, LCD_FB_START_ADDRESS);
+  //BSP_LCD_SelectLayer(LTDC_ACTIVE_LAYER);
+  BSP_LCD_DisplayOn();
+  //BSP_LCD_Clear(LCD_COLOR_BLACK);
+
+  /* Select the LCD Foreground Layer  */
+  //BSP_LCD_SelectLayer(1);
+
+  /* Clear the Foreground Layer */
+ // BSP_LCD_Clear(LCD_COLOR_BLACK);
+
+  /* Configure the transparency for foreground and background :
+     Increase the transparency */
+  //BSP_LCD_SetTransparency(0, 0);
+  //BSP_LCD_SetTransparency(1, 100);
+
+
+  BSP_LCD_SetTextColor(LCD_COLOR_RED);
+  char showntext[59] = "Hello GFA!";
+  BSP_LCD_DisplayStringAtLine(4, showntext);
 
   /* Infinite loop */
-  while (1)
+ /* while (1)
   {
-  }
+	  BSP_LCD_DisplayStringAtLine(4, showntext);
+	  BSP_LCD_Clear(LCD_COLOR_BLACK);
+  }*/
+
 }
 
 /**

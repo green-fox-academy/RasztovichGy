@@ -34,7 +34,10 @@
   *
   ******************************************************************************
   */
-
+/**************
+ * LED_BLINKER*
+ * ************
+ */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
@@ -98,16 +101,16 @@ If the button is not pressed, the LED should not be lit.
   // enable LED and GPIO
   BSP_LED_Init(LED_GREEN); //init led
   BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO); //init pushbutton in mode BUTTON_KEY: Key Push Button and BUTTON_MODE_GPIO: Button will be used as simple IO
-  BSP_PB_GetState(BUTTON_KEY); //init button getstate function
+  //BSP_PB_GetState(BUTTON_KEY); //init button getstate function //ezt a sor felesleges, úgyis meghívjuk az if-ben
 
   /* Infinite loop */
 
 
 while (1){
-	  if (BSP_PB_GetState(BUTTON_KEY) == GPIO_PIN_SET) //value: check getstate eredménye
-	  {
-	  	  BSP_LED_On(LED_GREEN);
-	  }
+	  if (BSP_PB_GetState(BUTTON_KEY) == GPIO_PIN_RESET) //value: check result of getstate function!
+	  	  	  BSP_LED_On(LED_GREEN);
+	  else
+		  	  BSP_LED_Off(LED_GREEN);
 	}
 }
 /**
