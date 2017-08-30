@@ -61,6 +61,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Src/socket_server.c</locationURI>
 		</link>
 		<link>
+			<name>Application/User/socket_server_tisztazas_elott_de_mar_mukodik.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Src/socket_server_tisztazas_elott_de_mar_mukodik.c</locationURI>
+		</link>
+		<link>
 			<name>Application/User/stm32f7xx_hal_timebase_tim.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Src/stm32f7xx_hal_timebase_tim.c</locationURI>
